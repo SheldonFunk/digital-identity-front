@@ -1,0 +1,7 @@
+{
+    "/": {
+        "target": "http://192.168.123.8:8024",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

@@ -1,0 +1,39 @@
+<section class="container mb-4 mt-4">
+    <div class="row flex-row">
+        <div class="col-12">
+            <div class="mb-mega-success jumbotron">
+                <h1 class="cv-text-green text-center">Congratulations {{first_name}}</h1>
+                <p class="text-center">Your COVID-19 Risk Recognition is on it’s way. It will take from <strong>1 to 3
+                        hours to be deposited into your bank account.</strong>
+                </p>
+            </div>
+            <!-- <app-button-box color="green" title="Congratulations {{first_name}}"
+                text="Your COVID-19 Relief is on it’s way. It will take from 2 to 4 days."></app-button-box> -->
+        </div>
+    </div>
+</section>
+<section class="container mb-4 mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h4>Useful information</h4>
+            <p>Get the latest information about the COVID-19 situation; as well as other plans from the Government of
+                Manitoba. </p>
+        </div>
+        <ng-container *ngFor="let post of blog;">
+            <div class="col-12 col-md-4">
+                <div class="cv-post d-flex flex-row flex-md-column mb-4">
+                    <div class="cv-post-img">
+                        <img src="{{post.image}}" alt="{{post.title}}" class="img-fluid" />
+                    </div>
+                    <div class="cv-post-text p-2 p-md-4">
+                        <h5>{{post.title}}</h5>
+                        <p>{{post.text}}</p>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</section>
+
+<!-- Placed it here as the animation will look weird with this outside the router. -->
+<app-footer></app-footer>

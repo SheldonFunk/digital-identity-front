@@ -1,0 +1,88 @@
+<section class="container mb-4 mt-4">
+    <div class="row flex-row">
+        <div class="col-12">
+            <h1>Hi {{current_user.first_name}}</h1>
+            <p>We have verified your identity and you have been <strong>approved to receive the MANITOBA RISK
+                    RECOGNITION benefit.
+                </strong> Please, verify the following
+                information to receive it.</p>
+        </div>
+    </div>
+</section>
+<section class="container mb-4">
+    <div class="row flex-row">
+        <div class="col-lg-12">
+            <div class="cv-light-box p-4">
+                <div class="row flex-row">
+                    <div class="col-12 mb-4">
+                        <div class="cv-entitled d-flex flex-row justify-content-center align-items-center">
+                            <div class="cv-white-box p-4 text-left">
+                                <h1>Thank you for being a <strong>NN1 Nurse</strong> at HSC Women's Hospital</h1>
+                                <p>Your work helped protect and heal Manitobans through the COVID-19 pandemic.</p>
+                            </div>
+                            <div class="cv-green-box p-4 flex-grow-0 flex-shrink-0">
+                                <h2>You are entitled to receive:</h2>
+                                <h1 class="cv-text-green cv-money">$1,377</h1>
+                                <p>Please review and select your prefered option.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="cv-white-box p-4 mb-4">
+                            <h2>Direct Deposit</h2>
+                            <div *ngIf="current_user.tier == '1'; then tier1; else tier2"></div>
+                            <ng-template #tier1>
+                                <p>To proceed with a direct deposit to your checking account, you need to present your
+                                    <strong>TIER 2 credential</strong> from MBCC or any digital credential issued by
+                                    your banks.
+                                </p>
+                                <app-button-box color="green" external="http://192.168.123.8:4200" icon="fas fa-share"
+                                    title="Go to MBCC" text="Update your credentials"></app-button-box>
+                            </ng-template>
+                            <ng-template #tier2>
+                                <p>We will deposit this amount to this following bank account:
+                                </p>
+                                <div class="cv-address mb-4 mb-lg-0">
+                                    <h6>BANK ACCOUNT</h6>
+                                    <img class="mb-4 mt-4" src="{{bank}}" alt="{{bank_alt}}" />
+                                    <!-- <p>{{current_user.bank_institution_number}}</p>git git  -->
+                                    <p><strong>Transit number: </strong>{{current_user.bank_transit_code}}</p>
+                                    <p><strong>Account number: </strong>{{current_user.bank_account_number}}</p>
+                                </div>
+                                <div class="d-flex flex-row justify-content-center mt-4">
+                                    <a routerLink="/sent-benefit" class="btn cv-btn-simple">Receive</a>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="cv-white-box p-4">
+                            <div class="col-12 mb-4">
+                                <h2>Physical Delivery</h2>
+                                <p>Get a cheque delivery to your address. Please confirm this is the address where you
+                                    want to receive it:</p>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="cv-address mb-4 mb-lg-0">
+                                    <h6>MAIN ADDRESS</h6>
+                                    <p>{{current_user.first_name}} {{current_user.last_name}}</p>
+                                    <p *ngIf="current_user.address">{{current_user.address}}</p>
+                                    <p *ngIf="current_user.unit">Unit {{current_user.unit}}</p>
+                                    <p *ngIf="current_user.city">{{current_user.city}}, {{current_user.province}}</p>
+                                    <p *ngIf="current_user.postal_code">{{current_user.postal_code}}</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row justify-content-center">
+                                <a routerLink="/sent-benefit" class="btn cv-btn-simple">Send</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Placed it here as the animation will look weird with this outside the router. -->
+<app-footer></app-footer>
